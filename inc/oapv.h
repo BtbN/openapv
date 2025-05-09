@@ -620,46 +620,46 @@ struct oapvm_payload {
  *****************************************************************************/
 typedef void       *oapvm_t; // instance identifier for OAPV metadata container
 
-oapvm_t OAPV_EXPORT oapvm_create(int *err);
-void OAPV_EXPORT oapvm_delete(oapvm_t mid);
-void OAPV_EXPORT oapvm_rem_all(oapvm_t mid);
-int OAPV_EXPORT oapvm_set(oapvm_t mid, int group_id, int type, void *data, int size, unsigned char *uuid);
-int OAPV_EXPORT oapvm_get(oapvm_t mid, int group_id, int type, void **data, int *size, unsigned char *uuid);
-int OAPV_EXPORT oapvm_rem(oapvm_t mid, int group_id, int type, unsigned char *uuid);
-int OAPV_EXPORT oapvm_set_all(oapvm_t mid, oapvm_payload_t *pld, int num_plds);
-int OAPV_EXPORT oapvm_get_all(oapvm_t mid, oapvm_payload_t *pld, int *num_plds);
+OAPV_EXPORT oapvm_t oapvm_create(int *err);
+OAPV_EXPORT void oapvm_delete(oapvm_t mid);
+OAPV_EXPORT void oapvm_rem_all(oapvm_t mid);
+OAPV_EXPORT int oapvm_set(oapvm_t mid, int group_id, int type, void *data, int size, unsigned char *uuid);
+OAPV_EXPORT int oapvm_get(oapvm_t mid, int group_id, int type, void **data, int *size, unsigned char *uuid);
+OAPV_EXPORT int oapvm_rem(oapvm_t mid, int group_id, int type, unsigned char *uuid);
+OAPV_EXPORT int oapvm_set_all(oapvm_t mid, oapvm_payload_t *pld, int num_plds);
+OAPV_EXPORT int oapvm_get_all(oapvm_t mid, oapvm_payload_t *pld, int *num_plds);
 
 /*****************************************************************************
  * interface for encoder
  *****************************************************************************/
 typedef void       *oapve_t; /* instance identifier for OAPV encoder */
 
-oapve_t OAPV_EXPORT oapve_create(oapve_cdesc_t *cdesc, int *err);
-void OAPV_EXPORT oapve_delete(oapve_t eid);
-int OAPV_EXPORT oapve_config(oapve_t eid, int cfg, void *buf, int *size);
-int OAPV_EXPORT oapve_param_default(oapve_param_t *param);
-int OAPV_EXPORT oapve_param_parse(oapve_param_t* param, const char* name,  const char* value);
-int OAPV_EXPORT oapve_encode(oapve_t eid, oapv_frms_t *ifrms, oapvm_t mid, oapv_bitb_t *bitb, oapve_stat_t *stat, oapv_frms_t *rfrms);
+OAPV_EXPORT oapve_t oapve_create(oapve_cdesc_t *cdesc, int *err);
+OAPV_EXPORT void oapve_delete(oapve_t eid);
+OAPV_EXPORT int oapve_config(oapve_t eid, int cfg, void *buf, int *size);
+OAPV_EXPORT int oapve_param_default(oapve_param_t *param);
+OAPV_EXPORT int oapve_param_parse(oapve_param_t* param, const char* name,  const char* value);
+OAPV_EXPORT int oapve_encode(oapve_t eid, oapv_frms_t *ifrms, oapvm_t mid, oapv_bitb_t *bitb, oapve_stat_t *stat, oapv_frms_t *rfrms);
 
 /*****************************************************************************
  * interface for decoder
  *****************************************************************************/
 typedef void       *oapvd_t; /* instance identifier for OAPV decoder */
 
-oapvd_t OAPV_EXPORT oapvd_create(oapvd_cdesc_t *cdesc, int *err);
-void OAPV_EXPORT oapvd_delete(oapvd_t did);
-int OAPV_EXPORT oapvd_config(oapvd_t did, int cfg, void *buf, int *size);
-int OAPV_EXPORT oapvd_decode(oapvd_t did, oapv_bitb_t *bitb, oapv_frms_t *ofrms, oapvm_t mid, oapvd_stat_t *stat);
+OAPV_EXPORT oapvd_t oapvd_create(oapvd_cdesc_t *cdesc, int *err);
+OAPV_EXPORT void oapvd_delete(oapvd_t did);
+OAPV_EXPORT int oapvd_config(oapvd_t did, int cfg, void *buf, int *size);
+OAPV_EXPORT int oapvd_decode(oapvd_t did, oapv_bitb_t *bitb, oapv_frms_t *ofrms, oapvm_t mid, oapvd_stat_t *stat);
 
 /*****************************************************************************
  * interface for utility
  *****************************************************************************/
-int OAPV_EXPORT oapvd_info(void *au, int au_size, oapv_au_info_t *aui);
+OAPV_EXPORT int oapvd_info(void *au, int au_size, oapv_au_info_t *aui);
 
 /*****************************************************************************
  * openapv version
  *****************************************************************************/
-char * OAPV_EXPORT oapv_version();
+OAPV_EXPORT char *oapv_version();
 
 #ifdef __cplusplus
 } /* extern "C" */
