@@ -56,7 +56,7 @@ endif()
 
 if(OAPV_BUILD_SHARED_LIB)
   add_library(${LIB_NAME_BASE}_dynamic SHARED ${SOURCE_FILES})
-  set_target_properties(${LIB_NAME_BASE}_dynamic PROPERTIES VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} SOVERSION ${LIB_SOVERSION})
+  set_target_properties(${LIB_NAME_BASE}_dynamic PROPERTIES VERSION ${LIB_SOVERSION}.${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} SOVERSION ${LIB_SOVERSION})
   set_target_properties(${LIB_NAME_BASE}_dynamic PROPERTIES OUTPUT_NAME ${LIB_NAME_BASE})
 
   # @todo Consider using WINDOWS_EXPORT_ALL_SYMBOLS instead of generate_export_header
