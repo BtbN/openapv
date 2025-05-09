@@ -64,9 +64,22 @@ project (OAPV VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} LANGUAG
 
 # Check input arguments.
 option(OAPV_APP_STATIC_BUILD "oapv_app will be statically linked against static oapv library" ON)
-if(OAPV_APP_STATIC_BUILD)
-    add_definitions(-DOAPV_STATIC_DEFINE)
-endif(OAPV_APP_STATIC_BUILD)
+
+option(OAPV_BUILD_APPS "Build the included command line apps" ON)
+option(OAPV_BUILD_STATIC_LIB "Build oapv static library" ON)
+option(OAPV_BUILD_SHARED_LIB "Build oapv shared library" ON)
+
+if(OAPV_BUILD_APPS AND OAPV_APP_STATIC_BUILD AND NOT OAPV_BUILD_STATIC_LIB)
+  message(FATAL_ERROR "Cannot build static apps without static lib.")
+endif()
+
+if(OAPV_BUILD_APPS AND NOT OAPV_APP_STATIC_BUILD AND NOT OAPV_BUILD_SHARED_LIB)
+  message(FATAL_ERROR "Cannot build shared apps without shared lib.")
+endif()
+
+if(NOT OAPV_BUILD_STATIC_LIB AND NOT OAPV_BUILD_SHARED_LIB)
+  message(FATAL_ERROR "At least one of static or shared lib build needs to be enabled.")
+endif()
 
 # To build for arm provide in command line: -DARM=TRUE
 if(NOT ARM)
@@ -118,7 +131,10 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # Sub-directories where more CMakeLists.txt exist
 add_subdirectory(src)
-add_subdirectory(app)
+
+if(OAPV_BUILD_APPS)
+  add_subdirectory(app)
+endif()
 
 ########################################
 # Targets
