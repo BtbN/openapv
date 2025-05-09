@@ -1,17 +1,17 @@
-set( LIB_NAME_BASE oapv )
+set(LIB_NAME_BASE oapv)
 
-set( LIB_SOVERSION 1)
+set(LIB_SOVERSION 1)
 
-file (GLOB LIB_INC "../inc/*.h")
-file (GLOB LIB_API_SRC "oapv.c")
-file (GLOB LIB_BASE_SRC "oapv_*.c")
-file (GLOB LIB_BASE_INC "oapv_*.h" )
-file (GLOB LIB_SSE_SRC "../src/sse/oapv_*.c")
-file (GLOB LIB_SSE_INC "../src/sse/oapv_*.h" )
-file (GLOB LIB_NEON_SRC "../src/neon/oapv_*.c")
-file (GLOB LIB_NEON_INC "../src/neon/oapv_*.h" )
-file (GLOB LIB_AVX_SRC "../src/avx/oapv_*.c")
-file (GLOB LIB_AVX_INC "../src/avx/oapv_*.h" )
+file(GLOB LIB_INC "../inc/*.h")
+file(GLOB LIB_API_SRC "oapv.c")
+file(GLOB LIB_BASE_SRC "oapv_*.c")
+file(GLOB LIB_BASE_INC "oapv_*.h" )
+file(GLOB LIB_SSE_SRC "../src/sse/oapv_*.c")
+file(GLOB LIB_SSE_INC "../src/sse/oapv_*.h" )
+file(GLOB LIB_NEON_SRC "../src/neon/oapv_*.c")
+file(GLOB LIB_NEON_INC "../src/neon/oapv_*.h" )
+file(GLOB LIB_AVX_SRC "../src/avx/oapv_*.c")
+file(GLOB LIB_AVX_INC "../src/avx/oapv_*.h" )
 
 include(GenerateExportHeader)
 include_directories("${CMAKE_BINARY_DIR}/include")
@@ -22,7 +22,7 @@ string(TOLOWER "${CMAKE_SYSTEM_PROCESSOR}" lowercase_CMAKE_SYSTEM_PROCESSOR)
 
 if(${lowercase_CMAKE_SYSTEM_PROCESSOR} MATCHES "^(arm|aarch)")
   message("  ARM processor")
-  #  add_definitions (-mfloat-abi=softfp -mfpu=neon)
+  #  add_definitions(-mfloat-abi=softfp -mfpu=neon)
   add_definitions(-DARM=1)
   set(ARM "TRUE")
 elseif(${lowercase_CMAKE_SYSTEM_PROCESSOR} MATCHES "^(x86|ia64|i386|i686|amd64)")
@@ -31,9 +31,9 @@ elseif(${lowercase_CMAKE_SYSTEM_PROCESSOR} MATCHES "^(x86|ia64|i386|i686|amd64)"
   set(X86 "TRUE")
 endif()
 
-if( ${CMAKE_SYSTEM_PROCESSOR} MATCHES "64" )
+if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "64")
   message("  64-bit")
-  add_compile_definitions( _IS64BIT)
+  add_compile_definitions(_IS64BIT)
 endif()
 
 if(ARM)
@@ -173,13 +173,12 @@ if(OAPV_BUILD_SHARED_LIB)
   )
 endif()
 
-if( NOT MSVC )
+if(NOT MSVC)
     configure_file(
-        "${CMAKE_SOURCE_DIR}/pkgconfig/${LIB_NAME_BASE}.pc.in"
-        "${CMAKE_BINARY_DIR}/${LIB_NAME_BASE}.pc"
-        IMMEDIATE @ONLY)
+      "${CMAKE_SOURCE_DIR}/pkgconfig/${LIB_NAME_BASE}.pc.in"
+      "${CMAKE_BINARY_DIR}/${LIB_NAME_BASE}.pc" @ONLY)
 
-    install( FILES
-        "${CMAKE_BINARY_DIR}/${LIB_NAME_BASE}.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+    install(FILES
+      "${CMAKE_BINARY_DIR}/${LIB_NAME_BASE}.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
     )
 endif()
