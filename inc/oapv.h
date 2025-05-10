@@ -36,6 +36,8 @@
 extern "C" {
 #endif
 
+#include <oapv/oapv_config.h>
+
 #ifdef OAPV_STATIC_DEFINE
 #define OAPV_EXPORT
 #else

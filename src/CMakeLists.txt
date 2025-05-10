@@ -13,6 +13,10 @@ file(GLOB LIB_NEON_INC "../src/neon/oapv_*.h" )
 file(GLOB LIB_AVX_SRC "../src/avx/oapv_*.c")
 file(GLOB LIB_AVX_INC "../src/avx/oapv_*.h" )
 
+set(LIB_CONFIG_HEADER "${CMAKE_BINARY_DIR}/include/${LIB_NAME_BASE}/${LIB_NAME_BASE}_config.h")
+configure_file("${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h.in" "${LIB_CONFIG_HEADER}" @ONLY)
+list(APPEND LIB_INC "${LIB_CONFIG_HEADER}")
+
 include(GenerateExportHeader)
 include_directories("${CMAKE_BINARY_DIR}/include")
 
