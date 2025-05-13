@@ -1,6 +1,8 @@
 set(LIB_NAME_BASE oapv)
 
-set(LIB_SOVERSION 1)
+set(LIB_VERSION_MAJOR 1)
+set(LIB_VERSION_MINOR 0)
+set(LIB_VERSION_PATCH 0)
 
 file(GLOB LIB_INC "../inc/*.h")
 file(GLOB LIB_API_SRC "oapv.c")
@@ -60,7 +62,7 @@ endif()
 
 if(OAPV_BUILD_SHARED_LIB)
   add_library(${LIB_NAME_BASE}_dynamic SHARED ${SOURCE_FILES})
-  set_target_properties(${LIB_NAME_BASE}_dynamic PROPERTIES VERSION ${LIB_SOVERSION}.${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR} SOVERSION ${LIB_SOVERSION})
+  set_target_properties(${LIB_NAME_BASE}_dynamic PROPERTIES VERSION ${LIB_VERSION_MAJOR}.${LIB_VERSION_MINOR}.${LIB_VERSION_PATCH} SOVERSION ${LIB_VERSION_MAJOR})
   set_target_properties(${LIB_NAME_BASE}_dynamic PROPERTIES OUTPUT_NAME ${LIB_NAME_BASE})
 
   # @todo Consider using WINDOWS_EXPORT_ALL_SYMBOLS instead of generate_export_header

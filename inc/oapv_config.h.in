@@ -38,13 +38,13 @@
 #endif
 #undef OAPV_BUILD_SHARED_LIB
 
-#define OAPV_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
-#define OAPV_VERSION_MINOR @PROJECT_VERSION_MINOR@
-#define OAPV_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define OAPV_LIB_VERSION_MAJOR @LIB_VERSION_MAJOR@
+#define OAPV_LIB_VERSION_MINOR @LIB_VERSION_MINOR@
+#define OAPV_LIB_VERSION_PATCH @LIB_VERSION_PATCH@
 
-#define OAPV_CHECK_VERSION(major, minor, patch)                        \
-    ((major) < OAPV_VERSION_MAJOR ||                                   \
-    ((major) == OAPV_VERSION_MAJOR && (minor) < OAPV_VERSION_MINOR) || \
-    ((major) == OAPV_VERSION_MAJOR && (minor) == OAPV_VERSION_MINOR && (patch) <= OAPV_VERSION_PATCH))
+#define OAPV_CHECK_LIB_VERSION(major, minor, patch)                            \
+    ((major) < OAPV_LIB_VERSION_MAJOR ||                                       \
+    ((major) == OAPV_LIB_VERSION_MAJOR && (minor) < OAPV_LIB_VERSION_MINOR) || \
+    ((major) == OAPV_LIB_VERSION_MAJOR && (minor) == OAPV_LIB_VERSION_MINOR && (patch) <= OAPV_LIB_VERSION_PATCH))
 
 #endif /* __OAPV_CONFIG_H__8465216516551324987461894651851187416502317561968__ */
