@@ -36,19 +36,7 @@
 extern "C" {
 #endif
 
-// The build system used in AOSP is Soong, not CMake.
-//
-// In the Android.bp file for the liboapv project, there are no rules to generate
-// the oapv_config.h file from the oapv_config.h.in template.
-//
-// As a result, the oapv_config.h file is not available on the Android platform,
-// and consequently, the OAPV_CHECK_LIB_VERSION macro and the OAPV_LIB_VERSION_MAJOR,
-// OAPV_LIB_VERSION_MINOR, and OAPV_LIB_VERSION_PATCH definitions, which specify
-// the version of the oapv library, are not accessible to Android users.
-//
-// To make it available, it is necessary to consider adding a mechanism in the Android.bp file
-// that generates the oapv_config.h file from the oapv_config.h.in template file.
-//
+/* Not available on Android due to different build system */
 #ifndef __ANDROID__
 #include <oapv/oapv_config.h>
 #endif
