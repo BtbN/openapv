@@ -36,17 +36,15 @@
 extern "C" {
 #endif
 
-/* Not available on Android due to different build system */
-#ifndef __ANDROID__
+#if defined(OAPV_CONFIG_HEADER)
 #include <oapv/oapv_config.h>
 #endif
 
-#ifdef OAPV_STATIC_DEFINE
-#define OAPV_EXPORT
-#else
+#if defined(OAPV_EXPORT_HEADER) && !defined(OAPV_STATIC_DEFINE)
 #include <oapv/oapv_exports.h>
+#else
+#define OAPV_EXPORT
 #endif
-
 
 /* size of macroblock */
 #define OAPV_LOG2_MB                    (4)
