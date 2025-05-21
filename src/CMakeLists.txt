@@ -30,8 +30,6 @@ set(LIB_CONFIG_HEADER "${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h")
 configure_file("${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h.in" "${LIB_CONFIG_HEADER}" @ONLY)
 list(APPEND LIB_INC "${LIB_CONFIG_HEADER}")
 
-message("--- ${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h.in")
-message("+++ ${LIB_CONFIG_HEADER}")
 
 message("SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
 

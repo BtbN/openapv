@@ -32,7 +32,7 @@
 #ifndef __OAPV_CONFIG_H__9876543210123456789012345678901234567890123456789__
 #define __OAPV_CONFIG_H__9876543210123456789012345678901234567890123456789__
  
-#define OAPV_LIBVERSION_HEADER 0 // 0 if the file oapv_libversion.h does not exist, otherwise 1
-#define OAPV_EXPORT_HEADER     0 // 0 if the file oapv_exports.h does not exist, otherwise 1
+#define OAPV_LIBVERSION_HEADER 1 // 0 if the file oapv_libversion.h does not exist, otherwise 1
+#define OAPV_EXPORT_HEADER     1 // 0 if the file oapv_exports.h does not exist, otherwise 1
 
 #endif /* __OAPV_CONFIG_H__9876543210123456789012345678901234567890123456789__ */
