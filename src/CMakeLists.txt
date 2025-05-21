@@ -15,17 +15,23 @@ file(GLOB LIB_NEON_INC "../src/neon/oapv_*.h" )
 file(GLOB LIB_AVX_SRC "../src/avx/oapv_*.c")
 file(GLOB LIB_AVX_INC "../src/avx/oapv_*.h" )
 
-set(LIB_CONFIG_HEADER "${CMAKE_BINARY_DIR}/include/${LIB_NAME_BASE}/${LIB_NAME_BASE}_config.h")
-configure_file("${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h.in" "${LIB_CONFIG_HEADER}" @ONLY)
-list(APPEND LIB_INC "${LIB_CONFIG_HEADER}")
+set(LIB_LIBVERSION_HEADER "${CMAKE_BINARY_DIR}/include/${LIB_NAME_BASE}/${LIB_NAME_BASE}_libversion.h")
+configure_file("${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_libversion.h.in" "${LIB_LIBVERSION_HEADER}" @ONLY)
+list(APPEND LIB_INC "${LIB_LIBVERSION_HEADER}")
 
-add_definitions(-DOAPV_CONFIG_HEADER)
+set(OAPV_LIBVERSION_HEADER 1)
 
 include(GenerateExportHeader)
 include_directories("${CMAKE_BINARY_DIR}/include")
 
-add_definitions(-DOAPV_EXPORT_HEADER)
+set(OAPV_EXPORT_HEADER 1)
 
+set(LIB_CONFIG_HEADER "${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h")
+configure_file("${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h.in" "${LIB_CONFIG_HEADER}" @ONLY)
+list(APPEND LIB_INC "${LIB_CONFIG_HEADER}")
+
+message("--- ${CMAKE_SOURCE_DIR}/inc/${LIB_NAME_BASE}_config.h.in")
+message("+++ ${LIB_CONFIG_HEADER}")
 
 message("SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
 

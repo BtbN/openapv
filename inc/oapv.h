@@ -36,8 +36,10 @@
 extern "C" {
 #endif
 
-#if defined(OAPV_CONFIG_HEADER)
 #include <oapv/oapv_config.h>
+
+#if defined(OAPV_LIBVERSION_HEADER)
+#include <oapv/oapv_libversion.h>
 #endif
 
 #if defined(OAPV_EXPORT_HEADER) && !defined(OAPV_STATIC_DEFINE)
